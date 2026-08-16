@@ -6,13 +6,13 @@ from groq import Groq
 from pydantic import BaseModel, Field
 
 load_dotenv()
-my_api_key=os.getenv("GROQ_API_KEY")
+my_api_key=os.getenv("GROQ_API_KEY") #make sure the name matches.
 
 if not my_api_key:
-    raise ValueError("API key kaha hai bhai")
+    raise ValueError("API key kaha baa ho babua")
 
 client=Groq(api_key=my_api_key)
-model = "openai/gpt-oss-120b"
+model = "openai/gpt-oss-120b" #here you can use any llm public abilable on groq.
 
 
 job_description="""
@@ -82,7 +82,7 @@ response=client.chat.completions.create(model=model, messages=messages, response
 answer=response.choices[0].message.content
 
 raw_json=answer
-# print(raw_json)
+
 
 
 
@@ -96,7 +96,7 @@ print(job.education_requirements)
 
 
 
-#parse real
+
 class MatchResult(BaseModel):
     score: float
     details: dict
@@ -268,8 +268,8 @@ for file_path in resume_folder.iterdir():
     #score and details
     #acount chtgpt
     # request bhejna shhur krega millions
-    #chattgot server jam ho jayega
-    time.sleep(5)
+    #chattbot server jam ho jayega
+    time.sleep(5) # ye cooldown time hai to prevent DDoS attach.
     print("Score:", result.score)
     all_results.append({
         "name": parsed_resume.name,
